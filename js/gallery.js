@@ -1,23 +1,36 @@
-window.onload = function() {
+window.onload = main;
+
+function main() {
+	// Capture gallery element and add event listener
 	var gallery = document.getElementById("gallery");
+	gallery.addEventListener("click", show);
+
+	// Capture imgShow element and add event listener
 	var imgShow = document.getElementById("image_show");
+	imgShow.addEventListener("click", hide);
+
+	// Fill gallery element with pictures.
 	populate();
 
-	// Event listener to enlarge a picture if clicked on.
-	gallery.addEventListener("click", function(){
-	    if (event.target.className === "picture") {
+	// Blow out picture on click
+	function show() {
+		if (event.target.className === "picture") {
 	        imgShow.className = "display_img";
 	        imgShow.firstChild.src = event.target.src;
 	    }
-	});
+	    else if (event.target.nodeName === "LI") {
+	        imgShow.className = "display_img";
+	        imgShow.firstChild.src = event.target.firstChild.src;
+	    }
+	}
 
-	// Event listener to dismiss enlarged picture if clicked away from.
-	imgShow.addEventListener("click", function(){
-	    if (event.target != imgShow.firstChild) {
+	// Hide picture on click away
+	function hide() {
+		if (event.target != imgShow.firstChild) {
 	        imgShow.className = "display_none";
 	    }
-	});
-};
+	}
+}
 
 // Populates the gallery with images.
 function populate(){
@@ -40,10 +53,12 @@ function populate(){
 		list.appendChild(li);
 	}
 
+	// Remove picture from list (if image doesn't load)
 	function remove(){
 		list.removeChild(this.parentNode);
 	}
 
+	// Concatenates image source 
 	function buildSrc(num) {
 		var head = 'images/pdxcg_';
 		var tail = '.jpg';
@@ -51,6 +66,7 @@ function populate(){
 		return head + num + tail;
 	}
 
+	// Adds leading "0" when necessary
 	function checkNum(num) {
 		if (num < 10) {
 			num = "0" + num;
