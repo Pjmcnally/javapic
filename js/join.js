@@ -34,10 +34,10 @@ function verifyAll() {
 /*
 function verifyName() {
 	if (nameInput.value){
-		setValid(this, text);
+		setValid(this);
 		return true;
 	} else {
-		setInvalid(this, text);
+		setInvalid(this);
 		return false;
 	}
 }
@@ -87,8 +87,7 @@ function setValid(elem){
 	elem.className = "valid";
 
 	label = elem.previousSibling.previousSibling;
-	// text = label.innerHTML;
+	text = label.innerHTML;
 	label.className = "valid";
-	console.log(text)
 	label.innerHTML = text;
 }
