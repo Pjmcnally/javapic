@@ -1,11 +1,11 @@
 window.onload = main;
 
 function main() {
-	// Capture gallery element and add event listener
+	// Captures gallery element and add event listener
 	var gallery = document.getElementById("gallery");
 	gallery.addEventListener("click", show);
 
-	// Capture imgShow element and add event listener
+	// Captures imgShow element and add event listener
 	var imgShow = document.getElementById("image_show");
 	imgShow.addEventListener("click", hide);
 
