@@ -6,72 +6,89 @@ function load(){
 	submit.addEventListener("click", verifyAll);
 
 	nameInput = document.querySelector("[name=name]");
-	nameInput.addEventListener("blur", verifyName);
+	nameInput.addEventListener("blur", verifyInput);
 
 	username = document.querySelector("[name=username]");
-	username.addEventListener("blur", verifyUsername);
+	username.addEventListener("blur", verifyInput);
 
 	email = document.querySelector("[name=email]");
-	email.addEventListener("blur", verifyEmail);
+	email.addEventListener("blur", verifyInput);
 }
 
 window.onload = load;
 
 function verifyAll() {
 	event.preventDefault();
-	name = verifyName();
-	user = verifyUsername();
-	email = verifyEmail();
-
-	if (name && user && email) {
+	all = document.getElementsByTagName("input");
+	verified = true;
+	for (var i = 0; i < all.length - 1; i++){
+		if (all[i].className != "valid"){
+			setInvalid(all[i]);
+			verified = false;
+		}
+	}
+	if (verified) {
 		console.log("Your verified");
 	}
 }
-
+/*
 function verifyName() {
-	label = nameInput.previousSibling.previousSibling;
-	text = "name";
-
-	if (!nameInput.value){
-		nameInput.className = "invalid";
-		label.style.color = "red";
-		label.innerHTML = text + " *";
+	if (nameInput.value){
+		setValid(this, text);
+		return true;
+	} else {
+		setInvalid(this, text);
 		return false;
 	}
-	label.style.color = "black";
-	label.innerHTML = text;
-	nameInput.classList.remove("invalid");
-	return true;
 }
 
 function verifyUsername() {
-	label = username.previousSibling.previousSibling;
-	text = "username";
-
-	if (!username.value){
-		username.className = "invalid";
-		label.style.color = "red";
-		label.innerHTML = text + " *";
+	if (username.value){
+		setValid(this);
+		return true;
+	} else {
+		setInvalid(this);
 		return false;
 	}
-	label.style.color = "black";
-	label.innerHTML = text;
-	username.classList.remove("invalid");
-	return true;
 }
 
 function verifyEmail() {
-	label = email.previousSibling.previousSibling;
-	text = "email";
-
-	if (!email.value){
-		email.className = "invalid";
-		label.style.color = "red";
-		label.innerHTML = text + " *";
+	if (email.value){
+		setValid(this);
+		return true;
+	} else {
+		setInvalid(this);
 		return false;
 	}
-	label.style.color = "black";
+}
+*/
+
+function verifyInput() {
+	if (this.value){
+		setValid(this);
+		return true;
+	} else {
+		setInvalid(this);
+		return false;
+	}
+}
+
+
+function setInvalid(elem){
+	elem.className = "invalid";
+
+	label = elem.previousSibling.previousSibling;
+	
+	label.className = "invalid";
+	label.innerHTML = text + " *";
+}
+
+function setValid(elem){
+	elem.className = "valid";
+
+	label = elem.previousSibling.previousSibling;
+	// text = label.innerHTML;
+	label.className = "valid";
+	console.log(text)
 	label.innerHTML = text;
-	email.classList.remove("invalid");
-	return true;
 }

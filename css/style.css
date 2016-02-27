@@ -101,10 +101,22 @@ input {
     color: #fff;
     border-radius: 2px;
 }
+label.invalid {
+	color: red;
+}
 
-.invalid {
+input.invalid {
     border: 1px solid red;
     background-color: rgba(255, 0, 0, .1);
+}
+
+label.valid {
+	color: green;
+}
+
+input.valid {
+    border: 1px solid green;
+    background-color: rgba(0, 255, 0, .1);
 }
 
 
