@@ -1,23 +1,12 @@
 function load(){
-	// Should these all be 1 line commands or is 2 lines more clear?
-	// If I make them one line they slightly exceed the 80 char limit. Problem?
-	var form = document.getElementById("signup");
-	form.noValidate = true;
-
-	var submit = document.getElementById("submit");
-	submit.addEventListener("click", verifyAll);
-
-	var nameInput = document.querySelector("[name=name]");
-	nameInput.addEventListener("blur", verifyInput);
-
-	var username = document.querySelector("[name=username]");
-	username.addEventListener("blur", verifyInput);
-
-	var email = document.querySelector("[name=email]");
-	email.addEventListener("blur", verifyEmail);
+	document.getElementById("signup").noValidate = true;
+	document.getElementById("submit").addEventListener("click", verAll);
+	document.querySelector("[name=name]").addEventListener("blur", verInpt);
+	document.querySelector("[name=username]").addEventListener("blur", verInpt);
+	document.querySelector("[name=email]").addEventListener("blur", verEmail);
 }
 
-function verifyAll() {
+function verAll() {
 	event.preventDefault();
 	invalid = checkAll();
 
@@ -30,7 +19,7 @@ function verifyAll() {
 	}
 }
 
-function verifyInput() {
+function verInpt() {
 	if (this.value){
 		setValid(this);
 	} else {
@@ -39,28 +28,24 @@ function verifyInput() {
 }
 
 /*
-function verifyName() {
+function verName() {
 	if (nameInput.value){
 		setValid(this);
-		return true;
 	} else {
 		setInvalid(this);
-		return false;
 	}
 }
 
-function verifyUsername() {
+function verUser() {
 	if (username.value){
 		setValid(this);
-		return true;
 	} else {
 		setInvalid(this);
-		return false;
 	}
 }
 */
 
-function verifyEmail() {
+function verEmail() {
 	var emailTest = /^[^@\s]+@[\w\d]+.[\w\d]+$/;
 
 	if (emailTest.test(this.value)){
@@ -74,26 +59,23 @@ function verifyEmail() {
 
 function setInvalid(elem){
 	var label = elem.previousSibling.previousSibling;
-	var text = (/\w+:/).exec(label.innerHTML)[0];
-	var warn = document.getElementById("warning");
 
 	elem.className = "invalid";
-	label.innerHTML = "* " + text;
+	label.innerHTML = "* " + (/\w+:/).exec(label.innerHTML)[0];
 	label.className = "invalid";
-	warn.style.display = "block";
+
+	document.getElementById("warning").style.display = "block";
 }
 
 function setValid(elem){
 	var label = elem.previousSibling.previousSibling;
-	var text = (/\w+:/).exec(label.innerHTML)[0];
 
 	elem.className = "valid";
 	label.className = "valid";
-	label.innerHTML = "&#10004;  "+ text;
+	label.innerHTML = "&#10004;  "+ (/\w+:/).exec(label.innerHTML)[0];
 
 	if (checkAll().length === 0){
-		var warn = document.getElementById("warning");
-		warn.style.display = "none";
+		document.getElementById("warning").style.display = "none";
 	}
 }
 
