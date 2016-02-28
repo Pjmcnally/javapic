@@ -119,6 +119,13 @@ input.valid {
     background-color: rgba(0, 255, 0, .1);
 }
 
+#warning {
+	color: red;
+	display: none;
+	margin-bottom: -16px;
+	font-size: 14px;
+}
+
 
 /**----------- Gallery Styles -------------**/
 .gallery_page header {
