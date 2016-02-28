@@ -1,36 +1,43 @@
 function load(){
-	form = document.getElementById("signup");
+	// Should these all be 1 line commands or is 2 lines more clear?
+	// If I make them one line they slightly exceed the 80 char limit. Problem?
+	var form = document.getElementById("signup");
 	form.noValidate = true;
 
-	submit = document.getElementById("submit");
+	var submit = document.getElementById("submit");
 	submit.addEventListener("click", verifyAll);
 
-	nameInput = document.querySelector("[name=name]");
+	var nameInput = document.querySelector("[name=name]");
 	nameInput.addEventListener("blur", verifyInput);
 
-	username = document.querySelector("[name=username]");
+	var username = document.querySelector("[name=username]");
 	username.addEventListener("blur", verifyInput);
 
-	email = document.querySelector("[name=email]");
-	email.addEventListener("blur", verifyInput);
+	var email = document.querySelector("[name=email]");
+	email.addEventListener("blur", verifyEmail);
 }
-
-window.onload = load;
 
 function verifyAll() {
 	event.preventDefault();
-	all = document.getElementsByTagName("input");
-	verified = true;
-	for (var i = 0; i < all.length - 1; i++){
-		if (all[i].className != "valid"){
-			setInvalid(all[i]);
-			verified = false;
+	invalid = checkAll();
+
+	if (invalid.length === 0) {
+		console.log("Your Verified");
+	} else {
+		for (var i = 0; i < invalid.length; i++) {
+			setInvalid(invalid[i]);
 		}
 	}
-	if (verified) {
-		console.log("Your verified");
+}
+
+function verifyInput() {
+	if (this.value){
+		setValid(this);
+	} else {
+		setInvalid(this);
 	}
 }
+
 /*
 function verifyName() {
 	if (nameInput.value){
@@ -51,20 +58,12 @@ function verifyUsername() {
 		return false;
 	}
 }
-
-function verifyEmail() {
-	if (email.value){
-		setValid(this);
-		return true;
-	} else {
-		setInvalid(this);
-		return false;
-	}
-}
 */
 
-function verifyInput() {
-	if (this.value){
+function verifyEmail() {
+	var emailTest = /^[^@\s]+@[\w\d]+.[\w\d]+$/;
+
+	if (emailTest.test(this.value)){
 		setValid(this);
 		return true;
 	} else {
@@ -73,23 +72,41 @@ function verifyInput() {
 	}
 }
 
-
 function setInvalid(elem){
-	elem.className = "invalid";
-	
 	var label = elem.previousSibling.previousSibling;
-	var text = (/\w+/).exec(label.innerHTML)[0];
-	
-	label.innerHTML = text + " *";
+	var text = (/\w+:/).exec(label.innerHTML)[0];
+	var warn = document.getElementById("warning");
+
+	elem.className = "invalid";
+	label.innerHTML = "* " + text;
 	label.className = "invalid";
+	warn.style.display = "block";
 }
 
 function setValid(elem){
-	elem.className = "valid";
-
 	var label = elem.previousSibling.previousSibling;
-	var text = (/\w+/).exec(label.innerHTML)[0];
-	
+	var text = (/\w+:/).exec(label.innerHTML)[0];
+
+	elem.className = "valid";
 	label.className = "valid";
-	label.innerHTML = text;
+	label.innerHTML = "&#10004;  "+ text;
+
+	if (checkAll().length === 0){
+		var warn = document.getElementById("warning");
+		warn.style.display = "none";
+	}
 }
+
+function checkAll(){
+	var invalid = [];
+	var all = document.getElementsByTagName("input");
+
+	for (var i = 0; i < all.length - 1; i++){
+		if (all[i].className != "valid"){
+			invalid.push(all[i]);
+		}
+	}
+	return invalid;
+}
+
+window.onload = load;
