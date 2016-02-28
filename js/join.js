@@ -76,18 +76,20 @@ function verifyInput() {
 
 function setInvalid(elem){
 	elem.className = "invalid";
-
-	label = elem.previousSibling.previousSibling;
 	
-	label.className = "invalid";
+	var label = elem.previousSibling.previousSibling;
+	var text = (/\w+/).exec(label.innerHTML)[0];
+	
 	label.innerHTML = text + " *";
+	label.className = "invalid";
 }
 
 function setValid(elem){
 	elem.className = "valid";
 
-	label = elem.previousSibling.previousSibling;
-	text = label.innerHTML;
+	var label = elem.previousSibling.previousSibling;
+	var text = (/\w+/).exec(label.innerHTML)[0];
+	
 	label.className = "valid";
 	label.innerHTML = text;
 }
