@@ -1,34 +1,47 @@
 window.onload = main;
 
 function main() {
-	// Captures gallery element and add event listener
-	var gallery = document.getElementById("gallery");
-	gallery.addEventListener("click", show);
-
-	// Captures imgShow element and add event listener
-	var imgShow = document.getElementById("image_show");
-	imgShow.addEventListener("click", hide);
+	// Add event listeners to gallery and image_show 
+	document.getElementById("gallery").addEventListener("click", show);
+	document.getElementById("image_show").addEventListener("click", hide);
 
 	// Fill gallery element with pictures.
 	populate();
 
-	// Blow out picture on click
-	function show() {
-		if (event.target.className === "picture") {
-	        imgShow.className = "display_img";
-	        imgShow.firstChild.src = event.target.src;
-	    }
-	    else if (event.target.nodeName === "LI") {
-	        imgShow.className = "display_img";
-	        imgShow.firstChild.src = event.target.firstChild.src;
-	    }
-	}
+	// put name in tagline (if name exists);
+	name();
+}
 
-	// Hide picture on click away
-	function hide() {
-		if (event.target != imgShow.firstChild) {
-	        imgShow.className = "display_none";
-	    }
+// Blow out picture on click
+function show() {
+	var imgShow = document.getElementById("image_show");
+
+	if (event.target.className === "picture") {
+        imgShow.className = "display_img";
+        imgShow.firstChild.src = event.target.src;
+    }
+    else if (event.target.nodeName === "LI") {
+        imgShow.className = "display_img";
+        imgShow.firstChild.src = event.target.firstChild.src;
+    }
+}
+
+// Hide picture on click away
+function hide() {
+	var imgShow = document.getElementById("image_show");
+	
+	if (event.target != imgShow.firstChild) {
+        imgShow.className = "display_none";
+    }
+}
+
+// Pulls name from web address and adds it to tagline.
+function name() {
+	if (location.search) {
+	    document.querySelector("span.tagline").innerHTML = 
+	    	"develop something beautiful, " + 
+	    	location.search.slice(1) + 
+	    	"!";
 	}
 }
 
