@@ -1,6 +1,4 @@
-window.onload = main;
-
-function main() {
+function carousel() {
 	var jumbotron = document.getElementById("jumbotron");
 	var imageNum = 0;  // Number to track current picture.
 	var imageMax = 60;  // Total number of pictures.
@@ -44,3 +42,5 @@ function main() {
 
 	setInterval(change, delay * 1000);
 }
+
+window.onload = carousel;

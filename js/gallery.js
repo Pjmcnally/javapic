@@ -51,12 +51,10 @@ function populate(){
 	document.getElementById("gallery").appendChild(list);
 
 	for (var i = 1; i <= imageMax; i++){
-		var num = checkNum(i);
-
 		var img = document.createElement("img");
 		img.onerror = remove;
 		img.className = "picture";
-		img.src = 'images/pdxcg_' + num + '.jpg';
+		img.src = 'images/pdxcg_' + checkNum(i) + '.jpg';
 
 		var li = document.createElement("li");
 		li.appendChild(img);
@@ -64,7 +62,7 @@ function populate(){
 		list.appendChild(li);
 	}
 
-	// Remove picture from list (if image doesn't load)
+	// Remove li from ul (if contained image doesn't load)
 	function remove(){
 		document.querySelector("UL").removeChild(this.parentNode);
 	}

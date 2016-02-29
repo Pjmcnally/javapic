@@ -41,9 +41,8 @@ function verUser(event) {
 
 // Tests for a valid looking email address
 function verEmail(event) {
-	var emailTest = /^[^@\s]+@[\w\d]+.[\w\d]+$/;
-
-	if (emailTest.test(event.target.value)){
+	// regex to text for valid email
+	if (/^[^@\s]+@[\w\d]+.[\w\d]+$/.test(event.target.value)){
 		setValid(event.target);
 	} else {
 		setInvalid(event.target);
