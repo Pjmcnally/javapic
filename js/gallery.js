@@ -1,5 +1,3 @@
-window.onload = main;
-
 function main() {
 	// Add event listeners to gallery and image_show 
 	document.getElementById("gallery").addEventListener("click", show);
@@ -12,7 +10,7 @@ function main() {
 	name();
 }
 
-// Blow out picture on click
+// Activate lightbox with picture on click
 function show(event) {
 	var imgShow = document.getElementById("image_show");
 
@@ -58,7 +56,7 @@ function populate(){
 		var img = document.createElement("img");
 		img.onerror = remove;
 		img.className = "picture";
-		img.src = buildSrc(num);
+		img.src = 'images/pdxcg_' + num + '.jpg';
 
 		var li = document.createElement("li");
 		li.appendChild(img);
@@ -71,14 +69,6 @@ function populate(){
 		document.querySelector("UL").removeChild(this.parentNode);
 	}
 
-	// Concatenates image source 
-	function buildSrc(num) {
-		var head = 'images/pdxcg_';
-		var tail = '.jpg';
-
-		return head + num + tail;
-	}
-
 	// Adds leading "0" when necessary
 	function checkNum(num) {
 		if (num < 10) {
@@ -88,3 +78,5 @@ function populate(){
 		return num;
 	}
 }
+
+window.onload = main;
