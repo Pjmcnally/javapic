@@ -11,7 +11,8 @@ function verAll() {
 	invalid = checkAll();
 
 	if (invalid.length === 0) {
-		console.log("Your Verified");
+		window.location.href = "gallery.html?" + 
+			document.querySelector("[name=name]").value;
 	} else {
 		for (var i = 0; i < invalid.length; i++) {
 			setInvalid(invalid[i]);
@@ -26,24 +27,6 @@ function verInpt() {
 		setInvalid(this);
 	}
 }
-
-/*
-function verName() {
-	if (nameInput.value){
-		setValid(this);
-	} else {
-		setInvalid(this);
-	}
-}
-
-function verUser() {
-	if (username.value){
-		setValid(this);
-	} else {
-		setInvalid(this);
-	}
-}
-*/
 
 function verEmail() {
 	var emailTest = /^[^@\s]+@[\w\d]+.[\w\d]+$/;
