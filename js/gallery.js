@@ -13,7 +13,7 @@ function main() {
 }
 
 // Blow out picture on click
-function show() {
+function show(event) {
 	var imgShow = document.getElementById("image_show");
 
 	if (event.target.className === "picture") {
@@ -27,7 +27,7 @@ function show() {
 }
 
 // Hide picture on click away
-function hide() {
+function hide(event) {
 	var imgShow = document.getElementById("image_show");
 	
 	if (event.target != imgShow.firstChild) {
@@ -50,17 +50,17 @@ function populate(){
 	var imageMax = 60;  // Total number of pictures.
 
 	var list = document.createElement("ul");
-	gallery.appendChild(list);
+	document.getElementById("gallery").appendChild(list);
 
 	for (var i = 1; i <= imageMax; i++){
-		num = checkNum(i);
+		var num = checkNum(i);
 
-		img = document.createElement("img");
+		var img = document.createElement("img");
 		img.onerror = remove;
 		img.className = "picture";
 		img.src = buildSrc(num);
 
-		li = document.createElement("li");
+		var li = document.createElement("li");
 		li.appendChild(img);
 
 		list.appendChild(li);
@@ -68,7 +68,7 @@ function populate(){
 
 	// Remove picture from list (if image doesn't load)
 	function remove(){
-		list.removeChild(this.parentNode);
+		document.querySelector("UL").removeChild(this.parentNode);
 	}
 
 	// Concatenates image source 
