@@ -22,22 +22,22 @@ function verAll(event) {
 }
 
 // Tests for an entry that does not posses any spaces
-function verInpt() {
-	if (/^[^\s]+$/.test(this.value)){
-		setValid(this);
+function verInpt(event) {
+	if (/^[^\s]+$/.test(event.target.value)){
+		setValid(event.target);
 	} else {
-		setInvalid(this);
+		setInvalid(event.target);
 	}
 }
 
 // Tests for a valid looking email address
-function verEmail() {
+function verEmail(event) {
 	var emailTest = /^[^@\s]+@[\w\d]+.[\w\d]+$/;
 
-	if (emailTest.test(this.value)){
-		setValid(this);
+	if (emailTest.test(event.target.value)){
+		setValid(event.target);
 	} else {
-		setInvalid(this);
+		setInvalid(event.target);
 	}
 }
 
