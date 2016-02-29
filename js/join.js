@@ -7,9 +7,9 @@ function load(){
 }
 
 // Tests if all fields have been verified.  If yes redirects if not warns user.
-function verAll() {
+function verAll(event) {
 	event.preventDefault();
-	invalid = checkAll();
+	var invalid = checkAll();
 
 	if (invalid.length === 0) {
 		window.location.href = "gallery.html?" + 
