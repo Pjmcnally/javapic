@@ -6,6 +6,7 @@ function load(){
 	document.querySelector("[name=email]").addEventListener("blur", verEmail);
 }
 
+// Tests if all fields have been verified.  If yes redirects if not warns user.
 function verAll() {
 	event.preventDefault();
 	invalid = checkAll();
@@ -20,26 +21,27 @@ function verAll() {
 	}
 }
 
+// Tests for an entry that does not posses any spaces
 function verInpt() {
-	if (this.value){
+	if (/^[^\s]+$/.test(this.value)){
 		setValid(this);
 	} else {
 		setInvalid(this);
 	}
 }
 
+// Tests for a valid looking email address
 function verEmail() {
 	var emailTest = /^[^@\s]+@[\w\d]+.[\w\d]+$/;
 
 	if (emailTest.test(this.value)){
 		setValid(this);
-		return true;
 	} else {
 		setInvalid(this);
-		return false;
 	}
 }
 
+// Adds invalid class to elems and modifies text as warning.
 function setInvalid(elem){
 	var label = elem.previousSibling.previousSibling;
 
@@ -50,6 +52,7 @@ function setInvalid(elem){
 	document.getElementById("warning").style.display = "block";
 }
 
+// Adds valid class to elems and (if necessary) hides warning text.
 function setValid(elem){
 	var label = elem.previousSibling.previousSibling;
 
@@ -62,6 +65,7 @@ function setValid(elem){
 	}
 }
 
+// Checks all input elems.  Returns list of any elems that are invalid.
 function checkAll(){
 	var invalid = [];
 	var all = document.getElementsByTagName("input");
