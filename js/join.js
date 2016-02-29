@@ -1,8 +1,8 @@
 function load(){
 	document.getElementById("signup").noValidate = true;
 	document.getElementById("submit").addEventListener("click", verAll);
-	document.querySelector("[name=name]").addEventListener("blur", verInpt);
-	document.querySelector("[name=username]").addEventListener("blur", verInpt);
+	document.querySelector("[name=name]").addEventListener("blur", verName);
+	document.querySelector("[name=username]").addEventListener("blur", verUser);
 	document.querySelector("[name=email]").addEventListener("blur", verEmail);
 }
 
@@ -21,8 +21,17 @@ function verAll(event) {
 	}
 }
 
-// Tests for an entry that does not posses any spaces
-function verInpt(event) {
+// Tests for a name entry
+function verName(event) {
+	if (event.target.value){
+		setValid(event.target);
+	} else {
+		setInvalid(event.target);
+	}
+}
+
+// Tests for a valid username (entry that does not posses any spaces)
+function verUser(event) {
 	if (/^[^\s]+$/.test(event.target.value)){
 		setValid(event.target);
 	} else {
