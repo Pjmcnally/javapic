@@ -40,7 +40,7 @@ function name() {
 	if (location.search) {
 	    document.querySelector("span.tagline").innerHTML = 
 	    	"develop something beautiful, " + 
-	    	location.search.slice(1) + 
+	    	location.search.slice(1).replace(/%20/g, " ") + 
 	    	"!";
 	}
 }
