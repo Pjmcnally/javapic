@@ -56,7 +56,7 @@ function populate(){
 		var num = checkNum(i);
 
 		var img = document.createElement("img");
-		img.onerror = document.querySelector("UL").removeChild(this.parentNode);
+		img.onerror = remove;
 		img.className = "picture";
 		img.src = buildSrc(num);
 
@@ -64,6 +64,11 @@ function populate(){
 		li.appendChild(img);
 
 		list.appendChild(li);
+	}
+
+	// Remove picture from list (if image doesn't load)
+	function remove(){
+		document.querySelector("UL").removeChild(this.parentNode);
 	}
 
 	// Concatenates image source 
