@@ -1,19 +1,12 @@
 function carousel() {
-	var jumbotron = document.getElementById("jumbotron");
-	var imageNum = 0;  // Number to track current picture.
-	var imageMax = 60;  // Total number of pictures.
-	var delay = 10;  // Delay between picture rotation.  Set in seconds.
-
-	// Changes picture displayed on page
-	function change() {
-		imageNum = buildNum(imageNum, imageMax);
-		var source = buildSrc(imageNum);
-
-		checkImage(source);
-	}
+	var nums = [];
+	var imageMax = 132;  // Total number of pictures.
+	var delay = 0.5;  // Delay between picture rotation.  Set in seconds.
 
 	// Sets onload and onerror functions to handle whether pictures loads
-	function checkImage(src) {
+	function buildImage(src) {
+		var jumbotron = document.getElementById("jumbotron");
+
 		var img = document.createElement("img");
 		img.onload = function() {
 			jumbotron.style.backgroundImage = "url(" + src + ")";
@@ -22,25 +15,40 @@ function carousel() {
 		img.src = src;
 	}
 
-	// Concatenates image source 
-	function buildSrc(num) {
-		var head = 'images/pdxcg_';
-		var tail = '.jpg';
-
-		return head + num + tail;
-	}
-	
-	// Adds leading "0" when necessary
-	function buildNum(num, max) {
-		num = (num % max) + 1;
-		if (num < 10) {
-			num = "0" + num;
-		}
-
+	// Adds leading "0" to image number when necessary
+	function checkNum(num) {
+		num = (num < 10) ? "0" + num : num;
 		return num;
 	}
 
+	function buildArray(){
+		var numbers = [];
+
+		for (var i = 1; i <= imageMax; i++){
+			numbers.push(i);
+		}
+
+		return numbers;
+	}
+
+
+	// Changes picture displayed on page
+	function change() {
+		if (nums.length === 0){
+			nums = buildArray();
+			console.log(nums);
+		}
+
+		var randomElem = Math.floor(Math.random() * nums.length);
+		var imageNum = checkNum(nums.splice(randomElem, 1));
+		var source = 'images/pdxcg_' + imageNum + '.jpg';
+
+		buildImage(source);
+	}
+
+	change();
 	setInterval(change, delay * 1000);
 }
+
 
 window.onload = carousel;
