@@ -14,7 +14,7 @@ function main() {
 function show(event) {
 	var imgShow = document.getElementById("image_show");
 
-	if (event.target.className === "picture") {
+	if (event.target.nodeName === "IMG") {
         imgShow.className = "display_img";
         imgShow.firstChild.src = event.target.src;
     }
@@ -28,7 +28,7 @@ function show(event) {
 function hide(event) {
 	var imgShow = document.getElementById("image_show");
 	
-	if (event.target != imgShow.firstChild) {
+	if (event.target.nodeName != "IMG") {
         imgShow.className = "display_none";
     }
 }
@@ -45,7 +45,7 @@ function name() {
 
 // Populates the gallery with images.
 function populate(){
-	var imageMax = 60;  // Total number of pictures.
+	var imageMax = 132;  // Total number of pictures.
 
 	var list = document.createElement("ul");
 	document.getElementById("gallery").appendChild(list);
@@ -53,7 +53,6 @@ function populate(){
 	for (var i = 1; i <= imageMax; i++){
 		var img = document.createElement("img");
 		img.onerror = remove;
-		img.className = "picture";
 		img.src = 'images/pdxcg_' + checkNum(i) + '.jpg';
 
 		var li = document.createElement("li");
@@ -72,7 +71,6 @@ function populate(){
 		if (num < 10) {
 			num = "0" + num;
 		}
-
 		return num;
 	}
 }
