@@ -1,7 +1,7 @@
 function carousel() {
 	var nums = [];
 	var imageMax = 132;  // Total number of pictures.
-	var delay = 10;  // Delay between picture rotation.  Set in seconds.
+	var delay = 7;  // Delay between picture rotation.  Set in seconds.
 
 	// Sets onload and onerror functions to handle whether pictures loads
 	function buildImage(src) {
