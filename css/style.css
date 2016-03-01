@@ -24,7 +24,7 @@ main {
 .jumbotron {
     width: 100%;
     height: 400px;
-    background-image: url("../images/pdxcg_05.jpg");
+    /*background-image: url("../images/pdxcg_05.jpg");*/
     background-size: 1024px;
     background-position: center;
     border: solid 15px #fff;
