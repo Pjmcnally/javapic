@@ -36,7 +36,7 @@ function hide(event) {
 // Pulls name from web address and adds it to tagline.
 function name() {
 	if (location.search) {
-	    document.querySelector("span.tagline").innerHTML = 
+	    document.querySelector("span.tagline").textContent = 
 	    	"develop something beautiful, " + 
 	    	location.search.slice(1).replace(/%20/g, " ") + 
 	    	"!";
