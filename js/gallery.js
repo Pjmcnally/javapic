@@ -45,7 +45,7 @@ function name() {
 
 // Populates the gallery with images.
 function populate(){
-	var imageMax = 132;  // Total number of pictures.
+	var imageMax = 120;  // Total number of pictures.
 
 	var list = document.createElement("ul");
 	document.getElementById("gallery").appendChild(list);

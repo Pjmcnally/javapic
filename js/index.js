@@ -1,13 +1,7 @@
 function carousel() {
 	var nums = [];
-	var imageMax = 132;  // Total number of pictures.
+	var imageMax = 120;  // Total number of pictures.
 	var delay = 7;  // Delay between picture rotation.  Set in seconds.
-
-	function randomPic() {
-		var randomNum = Math.floor(Math.random() * imageMax);
-		var source = 'images/pdxcg_' + randomNum + '.jpg';
-		buildImage(source);
-	}
 
 	// Sets onload and onerror functions to handle whether pictures loads
 	function buildImage(src) {
@@ -52,7 +46,6 @@ function carousel() {
 		buildImage(source);
 	}
 
-	randomPic();
 	setInterval(change, delay * 1000);
 }
 
