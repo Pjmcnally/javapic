@@ -56,4 +56,6 @@ function carousel() {
 	setInterval(change, delay * 1000);
 }
 
+
+// Onload event calls the carousel fuction to start the image rotation.
 window.onload = carousel;
