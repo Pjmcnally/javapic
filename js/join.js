@@ -1,15 +1,13 @@
 function load(){
 	// Add event listeners for form fields and set noValidate
-	document.getElementById("signup").noValidate = true;
-	document.getElementById("signup").addEventListener("submit", verAll);
+	form = document.getElementById("signup");
+	form.noValidate = true;
+	form.addEventListener("submit", verAll);
 
 	// The verify functions work on an elem.  I use event.target to pass it in.
-	document.querySelector("[name=name]").addEventListener("blur", 
-		function() {verName(event.target);});
-	document.querySelector("[name=username]").addEventListener("blur", 
-		function() {verUser(event.target);});
-	document.querySelector("[name=email]").addEventListener("blur", 
-		function() {verEmail(event.target);});
+	form.name.addEventListener("blur", function() {verName(event.target);});
+	form.username.addEventListener("blur", function() {verUser(event.target);});
+	form.email.addEventListener("blur", function() {verEmail(event.target);});
 }
 
 // Tests if all fields have been verified.  If yes redirects if not warns user.
