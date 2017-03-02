@@ -1,3 +1,7 @@
+This is an old assignment from my time at PDX Code Guild. I have made my work available on GitHub pages.
+
+All pictures used either by permision of the artist or under the Creative Commons Zero (CC0) license.
+
 # Javapic
 _"You're beautiful" is our slogan, and our website reflects that. Help get our Javascript there._
 
