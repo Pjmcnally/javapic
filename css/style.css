@@ -30,7 +30,7 @@ header {
 main {
     width: 80%;
     max-width: 1024px;
-    margin: 50px auto;
+    margin: 0px auto 50px auto;
 }
 
 /**------------ Jumbotron's Styling -----------------**/
