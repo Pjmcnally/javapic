@@ -3,6 +3,11 @@ body {
     font-family: Helvetica;
 }
 
+nav {
+    background-color: white;
+    list-style-type: none;
+}
+
 header {
     color: #fff;
     font-size: 2em;
