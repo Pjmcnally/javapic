@@ -1,4 +1,8 @@
-This is an old assignment from my time at PDX Code Guild. I have made my work available on GitHub pages.
+This is an old assignment from my time at PDX Code Guild. 
+
+I have updated slightly modified the HTML to add a Nav link back to this repo.  I have also set up the site to be hosted on GitHub pages.
+
+It is important to note that this was an exerscise primarily in JavaScript.  The site is static and has no backend so the information entered into the "Join Us" page isn't actually saved anywhere.
 
 All pictures used either by permision of the artist or under the Creative Commons Zero (CC0) license.
 
