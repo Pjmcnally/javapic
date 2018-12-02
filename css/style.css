@@ -106,16 +106,20 @@ input {
     padding: 5px;
 }
 
-.signup input[type="submit"] {
-    margin-top: 15px;
+.signup input {
+    margin-bottom: 20px
+}
+
+.signup input[type="submit"], #skip {
     padding: 10px;
     background-color: #000;
     border: none;
     color: #fff;
     border-radius: 2px;
 }
+
 label.invalid {
-	color: red;
+    color: red;
 }
 
 input.invalid {
@@ -124,7 +128,7 @@ input.invalid {
 }
 
 label.valid {
-	color: green;
+    color: green;
 }
 
 input.valid {
@@ -133,10 +137,10 @@ input.valid {
 }
 
 #warning {
-	color: red;
-	display: none;
-	margin-bottom: -16px;
-	font-size: 14px;
+    color: red;
+    visibility: hidden;
+    margin-bottom: 0px;
+    font-size: 14px;
 }
 
 
@@ -200,7 +204,6 @@ main.gallery_page header {
     border-bottom: 40px solid #fff;
     border-radius: 2px;
     background-color: #fff;
-
 }
 
 .display_none {
