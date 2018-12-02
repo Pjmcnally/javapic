@@ -14,12 +14,12 @@ function load(){
 function verAll(event) {
 	event.preventDefault();
 
-	verName(document.querySelector("[name=name]")); 
+	verName(document.querySelector("[name=name]"));
 	verUser(document.querySelector("[name=username]"));
 	verEmail(document.querySelector("[name=email]"));
 
 	if (checkAll()) {
-		window.location.href = "gallery.html?" + 
+		window.location.href = "gallery.html?" +
 			document.querySelector("[name=name]").value;
 	}
 }
@@ -83,7 +83,7 @@ function setValid(elem){
 function checkAll(){
 	var all = document.getElementsByTagName("input");
 
-	// -1 removes submit button from list to check.  
+	// -1 removes submit button from list to check.
 	for (var i = 0; i < all.length - 1; i++){
 		if (all[i].className != "valid"){
 			return false;

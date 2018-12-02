@@ -57,5 +57,5 @@ function carousel() {
 }
 
 
-// Onload event calls the carousel fuction to start the image rotation.
+// Onload event calls the carousel function to start the image rotation.
 window.onload = carousel;
