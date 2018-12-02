@@ -14,6 +14,9 @@ function load(){
 function verAll(event) {
 	event.preventDefault();
 
+    if (document.activeElement.id == "skip") {
+        window.location.href = "gallery.html?Guest";
+    } else {
 	verName(document.querySelector("[name=name]"));
 	verUser(document.querySelector("[name=username]"));
 	verEmail(document.querySelector("[name=email]"));
@@ -22,6 +25,7 @@ function verAll(event) {
 		window.location.href = "gallery.html?" +
 			document.querySelector("[name=name]").value;
 	}
+}
 }
 
 // Tests for a name entry
